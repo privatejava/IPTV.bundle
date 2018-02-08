@@ -173,9 +173,10 @@ def PlaylistReloader():
             if Dict['last_playlist_load_prefs'] != Prefs['playlist'] or Dict['last_playlist_load_filename_groups'] != Prefs['filename_groups'] or not Dict['last_playlist_load_datetime']:
                 LoadPlaylist()
             elif Prefs['m3u_reload_time'] != 'on start' and Prefs['m3u_reload_time'] != 'never':
-                current_datetime = Datetime.Now()
-                next_load_datetime = Datetime.ParseDate(str(current_datetime.date()) + ' ' + Prefs['m3u_reload_time'] + ':00')
-                if current_datetime > next_load_datetime and next_load_datetime > Dict['last_playlist_load_datetime']:
+                #current_datetime = Datetime.Now()
+                #next_load_datetime = Datetime.ParseDate(str(current_datetime.date()) + ' ' + Prefs['m3u_reload_time'] + ':00')
+                #if current_datetime > next_load_datetime and next_load_datetime > Dict['last_playlist_load_datetime']:
+                if Datetime.Now().second>= 50:
                     LoadPlaylist()
         Thread.Sleep(10)
 
